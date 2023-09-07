@@ -1,4 +1,3 @@
-'use strict';
 
 import privileges from '../../privileges';
 import categories from '../../categories';
@@ -6,7 +5,7 @@ import api from '../../api';
 
 import helpers from '../helpers';
 
-const Categories : any = module.exports;
+const Categories : any = {};
 
 const hasAdminPrivilege = async (uid: string) => {
     const ok = await privileges.admin.can(`admin:categories`, uid);
