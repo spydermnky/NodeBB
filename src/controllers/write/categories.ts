@@ -1,4 +1,3 @@
-
 import privileges from '../../privileges';
 import categories from '../../categories';
 import api from '../../api';
@@ -8,6 +7,8 @@ import helpers from '../helpers';
 const Categories : any = {};
 
 const hasAdminPrivilege = async (uid: string) => {
+    // The next line calls a function in a module that has not been updated to TS yet
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
     const ok = await privileges.admin.can(`admin:categories`, uid);
     if (!ok) {
         throw new Error('[[error:no-privileges]]');
@@ -15,10 +16,14 @@ const hasAdminPrivilege = async (uid: string) => {
 };
 
 Categories.get = async (req: any, res: any) => {
+    // The next line calls a function in a module that has not been updated to TS yet
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
     helpers.formatApiResponse(200, res, await api.categories.get(req, req.params));
 };
 
 Categories.create = async (req: any, res: any) => {
+    // The next line calls a function in a module that has not been updated to TS yet
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
     await hasAdminPrivilege(req.uid);
 
     const response = await api.categories.create(req, req.body);
@@ -26,6 +31,8 @@ Categories.create = async (req: any, res: any) => {
 };
 
 Categories.update = async (req: any, res: any) => {
+    // The next line calls a function in a module that has not been updated to TS yet
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
     await hasAdminPrivilege(req.uid);
 
     const payload: any = {};
@@ -36,6 +43,8 @@ Categories.update = async (req: any, res: any) => {
 };
 
 Categories.delete = async (req: any, res: any) => {
+    // The next line calls a function in a module that has not been updated to TS yet
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
     await hasAdminPrivilege(req.uid);
 
     await api.categories.delete(req, { cid: req.params.cid });
@@ -43,6 +52,8 @@ Categories.delete = async (req: any, res: any) => {
 };
 
 Categories.getPrivileges = async (req: any, res: any) => {
+    // The next line calls a function in a module that has not been updated to TS yet
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
     if (!await privileges.admin.can('admin:privileges', req.uid)) {
         throw new Error('[[error:no-privileges]]');
     }
@@ -51,6 +62,8 @@ Categories.getPrivileges = async (req: any, res: any) => {
 };
 
 Categories.setPrivilege = async (req: any, res: any) => {
+    // The next line calls a function in a module that has not been updated to TS yet
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
     if (!await privileges.admin.can('admin:privileges', req.uid)) {
         throw new Error('[[error:no-privileges]]');
     }
@@ -66,6 +79,8 @@ Categories.setPrivilege = async (req: any, res: any) => {
 };
 
 Categories.setModerator = async (req: any, res: any) => {
+    // The next line calls a function in a module that has not been updated to TS yet
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
     if (!await privileges.admin.can('admin:admins-mods', req.uid)) {
         throw new Error('[[error:no-privileges]]');
     }
