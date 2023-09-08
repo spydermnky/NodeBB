@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -16,8 +16,10 @@ const privileges_1 = __importDefault(require("../../privileges"));
 const categories_1 = __importDefault(require("../../categories"));
 const api_1 = __importDefault(require("../../api"));
 const helpers_1 = __importDefault(require("../helpers"));
-const Categories = module.exports;
+const Categories = {};
 const hasAdminPrivilege = (uid) => __awaiter(void 0, void 0, void 0, function* () {
+    // The next line calls a function in a module that has not been updated to TS yet
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
     const ok = yield privileges_1.default.admin.can(`admin:categories`, uid);
     if (!ok) {
         throw new Error('[[error:no-privileges]]');
